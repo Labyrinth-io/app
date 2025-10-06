@@ -38,6 +38,31 @@ class StatusCheck(BaseModel):
 class StatusCheckCreate(BaseModel):
     client_name: str
 
+# Sammy Sparkle Models
+class EmailSubscription(BaseModel):
+    email: EmailStr
+
+class EmailSubscriber(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    email: str
+    source: str = "viral_hooks_checklist"
+    subscribed_at: datetime = Field(default_factory=datetime.utcnow)
+    status: str = "active"
+
+class PurchaseRequest(BaseModel):
+    product: str
+    price: float
+    customer_email: Optional[str] = "sammy.sparkleee@gmail.com"
+
+class Purchase(BaseModel):
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()))
+    customer_email: str
+    product_name: str
+    price: float
+    transaction_id: str = Field(default_factory=lambda: "TXN_" + str(uuid.uuid4())[:8].upper())
+    purchased_at: datetime = Field(default_factory=datetime.utcnow)
+    status: str = "completed"
+
 # Add your routes to the router instead of directly to app
 @api_router.get("/")
 async def root():
