@@ -4,39 +4,38 @@ import { mockData } from './mock';
 
 export const Hero = ({ onCtaClick }) => {
   return (
-    <section className="min-h-screen flex items-center justify-center sparkle-bg gradient-bg-soft relative">
-      {/* Floating sparkles */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 text-2xl animate-bounce" style={{ animationDelay: '0s' }}>✨</div>
-        <div className="absolute top-3/4 right-1/4 text-xl animate-bounce" style={{ animationDelay: '1s' }}>💫</div>
-        <div className="absolute top-1/2 left-1/6 text-lg animate-bounce" style={{ animationDelay: '2s' }}>⭐</div>
-        <div className="absolute top-1/3 right-1/6 text-xl animate-bounce" style={{ animationDelay: '1.5s' }}>✨</div>
+    <section className="min-h-screen flex items-center justify-center relative bg-gradient-to-br from-pink-50 via-purple-50 to-white">
+      {/* Subtle floating sparkles - reduced and positioned carefully */}
+      <div className="absolute inset-0 pointer-events-none opacity-30">
+        <div className="absolute top-20 left-10 text-xl animate-pulse" style={{ animationDelay: '0s' }}>✨</div>
+        <div className="absolute bottom-20 right-10 text-lg animate-pulse" style={{ animationDelay: '2s' }}>💫</div>
+        <div className="absolute top-40 right-20 text-sm animate-pulse" style={{ animationDelay: '4s' }}>⭐</div>
       </div>
       
-      <div className="container mx-auto px-6 text-center relative z-10">
-        <div className="max-w-4xl mx-auto">
+      <div className="container mx-auto px-6 text-center relative z-20">
+        <div className="max-w-5xl mx-auto">
           {/* Main Headline */}
-          <h1 className="display-font text-4xl md:text-6xl lg:text-7xl font-bold text-gray-800 mb-6 leading-tight fade-in">
+          <h1 className="display-font text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 mb-6 leading-tight">
             {mockData.hero.headline}
           </h1>
           
           {/* Subheadline */}
-          <p className="body-font text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto fade-in" style={{ animationDelay: '0.2s' }}>
+          <p className="body-font text-lg md:text-xl text-gray-700 mb-10 max-w-3xl mx-auto leading-relaxed">
             {mockData.hero.subheadline}
           </p>
           
           {/* CTA Button */}
-          <div className="fade-in" style={{ animationDelay: '0.4s' }}>
+          <div className="mb-8">
             <Button 
               onClick={onCtaClick}
-              className="btn-sparkle text-lg px-8 py-4 rounded-full hover:scale-105 transform transition-all duration-300"
+              className="bg-gradient-to-r from-pink-500 to-purple-500 hover:from-pink-600 hover:to-purple-600 text-white text-lg px-10 py-4 rounded-full hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-xl"
             >
               {mockData.hero.ctaText}
             </Button>
           </div>
           
           {/* Trust indicator */}
-          <p className="text-sm text-gray-500 mt-6 fade-in" style={{ animationDelay: '0.6s' }}>
+          <p className="text-sm text-gray-600 font-medium">
             Join 180,000+ followers who trust Sammy's authentic approach ✨
           </p>
         </div>
