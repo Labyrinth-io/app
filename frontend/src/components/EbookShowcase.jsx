@@ -3,8 +3,12 @@ import { Button } from './ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
 import { Badge } from './ui/badge';
 import { Check, Star } from 'lucide-react';
-import { mockData, mockAPI } from './mock';
+import { mockData } from './mock';
 import { useToast } from '../hooks/use-toast';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 export const EbookShowcase = () => {
   const [isLoading, setIsLoading] = useState(false);
