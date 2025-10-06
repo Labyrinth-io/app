@@ -177,6 +177,10 @@ async def get_subscribers():
     """Get all email subscribers"""
     try:
         subscribers = await db.subscribers.find().to_list(1000)
+        # Convert ObjectId to string for JSON serialization
+        for subscriber in subscribers:
+            subscriber["_id"] = str(subscriber["_id"])
+        
         return {
             "success": True,
             "count": len(subscribers),
@@ -192,6 +196,10 @@ async def get_purchases():
     """Get all purchases"""
     try:
         purchases = await db.purchases.find().to_list(1000)
+        # Convert ObjectId to string for JSON serialization
+        for purchase in purchases:
+            purchase["_id"] = str(purchase["_id"])
+        
         return {
             "success": True,
             "count": len(purchases),
