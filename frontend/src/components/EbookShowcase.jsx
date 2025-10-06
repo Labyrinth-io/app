@@ -17,19 +17,21 @@ export const EbookShowcase = () => {
   const handlePurchase = async () => {
     setIsLoading(true);
     try {
-      const result = await mockAPI.purchaseEbook({
+      const response = await axios.post(`${API}/purchase`, {
         product: 'TikTok 150K Playbook',
-        price: 29
+        price: 29,
+        customer_email: 'sammy.sparkleee@gmail.com'
       });
       
       toast({
         title: "Purchase Successful! 🎉",
-        description: result.message,
+        description: response.data.message,
       });
     } catch (error) {
+      console.error('Purchase error:', error);
       toast({
         title: "Oops! Something went wrong",
-        description: "Please try again or contact support.",
+        description: error.response?.data?.detail || "Please try again or contact support.",
         variant: "destructive"
       });
     } finally {
