@@ -22,17 +22,18 @@ export const LeadMagnet = () => {
 
     setIsLoading(true);
     try {
-      const result = await mockAPI.subscribeEmail(email);
+      const response = await axios.post(`${API}/subscribe`, { email });
       
       toast({
         title: "Success! 🎉",
-        description: result.message + " Check your email for the free checklist!",
+        description: response.data.message,
       });
       setEmail('');
     } catch (error) {
+      console.error('Subscription error:', error);
       toast({
         title: "Oops! Something went wrong",
-        description: "Please try again or contact support.",
+        description: error.response?.data?.detail || "Please try again or contact support.",
         variant: "destructive"
       });
     } finally {
